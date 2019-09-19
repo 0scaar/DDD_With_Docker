@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Domain.Validator;
+using System;
 
 namespace Domain.Entities
 {
@@ -9,5 +8,15 @@ namespace Domain.Entities
         public string ReportName { get; set; }
         public bool Status { get; set; }
         public Guid TipoReporte { get; set; }
+
+        public Reporte(Guid id, string reportName, bool status, Guid tipoReporte)
+        {
+            this.Id = id;
+            this.ReportName = reportName;
+            this.Status = status;
+            this.TipoReporte = tipoReporte;
+
+            Validate(this, new ReporteValidator());
+        }
     }
 }
