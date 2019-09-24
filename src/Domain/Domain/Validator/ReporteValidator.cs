@@ -17,9 +17,15 @@ namespace Domain.Validator
                 .NotEmpty()
                 .NotNull()
                 .MaximumLength(20)
-                .Matches("/^[A-Za-z ]+$/");
+                .Matches(@"^[A-Za-z\s]+$");
 
+            RuleFor(x => x.Status)
+                .NotNull();
 
+            RuleFor(x => x.TipoReporte)
+                .NotEmpty()
+                .NotNull()
+                .NotEqual(new Guid());
         }
     }
 }

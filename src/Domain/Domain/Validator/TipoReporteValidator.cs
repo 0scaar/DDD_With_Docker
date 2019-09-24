@@ -17,7 +17,7 @@ namespace Domain.Validator
                 .NotEmpty().WithMessage(x => $"O campo {x.Tipo} não pode ser vazio")
                 .NotNull().WithMessage(x => $"O campo {x.Tipo} não pode ser nulo")
                 .MaximumLength(20).WithMessage(x => $"O campo {x.Tipo} só pode ter como máximo 20 carateres")
-                .Matches("/^[A-Za-z ]+$/").WithMessage(x => $"O campo {x.Tipo} só pode ter letras e espaços");
+                .Matches(@"^[A-Za-z\s]+$").WithMessage(x => $"O campo {x.Tipo} só pode ter letras e espaços");
         }
     }
 }
